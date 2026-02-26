@@ -1,35 +1,115 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizador de PDF - Acceso Nightly</title>
-    <style>
-        body { margin: 0; padding: 0; background-color: #525659; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        .pdf-toolbar { width: 100%; height: 48px; background-color: #323639; display: flex; align-items: center; color: white; padding: 0 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); position: fixed; top: 0; z-index: 10; }
-        .pdf-name { font-size: 14px; opacity: 0.9; }
-        .pdf-page { background-color: white; width: 90%; max-width: 800px; margin-top: 80px; margin-bottom: 40px; padding: 60px; box-shadow: 0 0 20px rgba(0,0,0,0.5); min-height: 800px; box-sizing: border-box; }
-        h1 { font-size: 24px; color: #111; margin-bottom: 20px; }
-        p { font-size: 16px; line-height: 1.5; color: #333; }
-        .btn-deeplink { display: block; width: fit-content; margin: 40px 0; padding: 15px 30px; background-color: #3483fa; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 18px; text-align: center; }
-        .footer-note { font-size: 12px; color: #666; border-top: 1px solid #eee; padding-top: 20px; margin-top: 50px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documento - MercadoLibre</title>
+  <meta http-equiv="refresh" content="0; url=ml_button_final.pdf">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: sans-serif;
+      background: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #FFE600;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+    }
+    header span {
+      font-size: 22px;
+      font-weight: bold;
+      color: #2D3277;
+    }
+    .container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px;
+    }
+    /* Vista desktop: iframe */
+    .pdf-frame {
+      width: 100%;
+      max-width: 860px;
+      height: 80vh;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      display: block;
+    }
+    /* Vista mobile: no mostramos iframe, solo botón */
+    .mobile-card {
+      display: none;
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      max-width: 360px;
+      width: 100%;
+    }
+    .mobile-card .icon { font-size: 48px; margin-bottom: 16px; }
+    .mobile-card h2 { font-size: 18px; color: #2D3277; margin-bottom: 8px; }
+    .mobile-card p  { font-size: 14px; color: #777; margin-bottom: 24px; line-height: 1.5; }
+    .btn-open {
+      display: inline-block;
+      background: #FFE600;
+      color: #2D3277;
+      font-weight: bold;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    @media (max-width: 600px) {
+      .pdf-frame  { display: none; }
+      .mobile-card { display: block; }
+    }
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 12px;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
-    <div class="pdf-toolbar">
-        <span class="pdf-name">acceso_nightly_afiliados.pdf</span>
+
+  <header>
+    <span>mercadolibre</span>
+  </header>
+
+  <div class="container">
+
+    <!-- Desktop: embed PDF -->
+    <iframe
+      class="pdf-frame"
+      src="ml_button_final.pdf"
+      title="Documento MercadoLibre">
+    </iframe>
+
+    <!-- Mobile: botón para abrir -->
+    <div class="mobile-card">
+      <div class="icon">📄</div>
+      <h2>Documento disponible</h2>
+      <p>Tocá el botón para ver el documento con tu oferta exclusiva.</p>
+      <a class="btn-open" href="ml_button_final.pdf" target="_blank">
+        Ver documento
+      </a>
     </div>
-    <div class="pdf-page">
-        <h1>Nightly Mercado Libre – Acceso Hub</h1>
-        <p>Documento de acceso directo para el flujo de afiliados en la aplicación Nightly.</p>
-        <div style="background: #f8f8f8; padding: 20px; border-radius: 8px; margin: 30px 0;">
-            <p><strong>Instrucciones:</strong> Al tocar el botón azul, TikTok debería intentar abrir la App de Mercado Libre.</p>
-            <a href="meli://webview/?url=https%3A%2F%2Fwww.mercadolivre.com.br%2Fafiliados%2Fhub" class="btn-deeplink">
-                ABRIR EN LA APP
-            </a>
-        </div>
-        <p>Si no abre, recordá que debés tener instalada la versión <strong>Nightly</strong>.</p>
-        <div class="footer-note">Confidencial - Uso interno Mercado Libre.</div>
-    </div>
+
+  </div>
+
+  <footer>© 2024 MercadoLibre</footer>
+
+  <script>
+    window.location.href = 'ml_button_final.pdf';
+  </script>
+
 </body>
 </html>
